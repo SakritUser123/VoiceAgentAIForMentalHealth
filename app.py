@@ -39,7 +39,7 @@ with tab0:
 with tab1:
     st.title("Search up the problem!")
     st.write("Do you feel like you can't trust the voice chat bot? No worries! You can also search up your problems online.")
-    options = ["Academic Stress", "Stress from a Big Event", "You need something funny?", "Motivation Speeches", "Relatable Stress", "What is anxiety?"]
+    options = ["Academic Stress", "Stress from a Big Event", "Funny Things to Cheer You Up", "Motivation Speeches", "How do You Feel Alive", "How Do You Deal With Depression", "How Do You Deal with Anxiety", "How to Lift Your Mood", "How do You Deal with Panic", "How Do You Stop Losing and Start Winning", "How to deal with Truma", "How to Relax", "How to Deal with a Breakup/Divorce", "How to Contol Your Anger", "How to Deal with Negative Self-Esteem", "How to Deal With Greif", "How to Have a Job You Don't Need a Vacation From", "How to Deal With Schizophrenia", "How to Deal With Feeling Nothing"]
     query = st.selectbox("Enter search term", options)
     search_url = f"https://www.google.com/search?q={query}"
     st.markdown(f'<a href="{search_url}" target="_blank">Click to search: {query}</a>', unsafe_allow_html=True)
