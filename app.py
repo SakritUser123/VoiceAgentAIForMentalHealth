@@ -148,13 +148,15 @@ with tab4:
     st.markdown(f'<a href="{search_urll}" target="_blank">Click to search: {qquery}</a>', unsafe_allow_html=True)
 
 with tab5:
+    start = st.button("Start Session! ", key = "675")
+    end = st.button("End Session! " , key = "387381831")
     if "dots" not in st.session_state:
         st.session_state.dots = 0
 
-    if st.button("Start Session! ", key = "675"):
+    if start:
         st.session_state.size = 20
         for i in range(5):
-            if st.button("End Session! " , key = "387381831"):
+            if end:
                 st.balloons()
                 
             st.session_state.size += 5
