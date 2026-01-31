@@ -28,13 +28,16 @@ tab0 , tab1, tab2, tab3 , tab4 = st.tabs(["Home Page" , "Search it Up!", "Chatbo
 with tab0:
     st.title("AI Mental Health Support")
     st.write("This app provides AI-powered conversations and educational information about mental health topics like stress, anxiety, and burnout. It is designed to support awareness and self-reflection.")
-    st.write(Stress & overwhelm
+    st.write(" - Stress & overwhelm " )
+    st.write("- Anxiety awareness" )
+    st.write("  - Emotional check-ins" )
+    st.write(" - Coping strategies")
+    st.write("This app also lets you find nearby mental health institutions to go to if you feel like you have an issue with your mental health.")
+    st.write("You can also search up commonly searched mental health terms for you to gain understanding of those terms.")
 
-    - Anxiety awareness
+    
 
-    - Emotional check-ins
-
-    - Coping strategies")
+   
 
 Mental health education
 with tab1:
