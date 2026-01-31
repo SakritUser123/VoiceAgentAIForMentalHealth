@@ -1,20 +1,19 @@
-
-
 import streamlit as st
 import requests
 
+# --- Voiceflow API Setup ---
+VOICEFLOW_API_KEY = "VF.DM.697e24991ace920941890242.hfXlQVbsqZgpHJHa"  # <-- Paste your key here
+VOICEFLOW_VERSION = "production"  # usually 'production'
+USER_ID = "user_1"  # unique session ID for this user
+VOICEFLOW_ENDPOINT = f"https://general-runtime.voiceflow.com/state/{USER_ID}?versionID={VOICEFLOW_VERSION}"
 
-VOICEFLOW_API_KEY = "VF.DM.697e24991ace920941890242.hfXlQVbsqZgpHJHa"
-VOICEFLOW_VERSION = "production"  
-VOICEFLOW_ENDPOINT = f"https://general-runtime.voiceflow.com/state/user_id?versionID={VOICEFLOW_VERSION}"
-
-
+# --- Initialize session ---
 if "conversation" not in st.session_state:
     st.session_state.conversation = []
 
+st.title("Voiceflow Agent Test")
 
-st.title("Voiceflow + Streamlit Agent")
-
+# --- User Input ---
 user_input = st.text_input("You:", key="input_text")
 
 if st.button("Send") and user_input:
@@ -28,11 +27,12 @@ if st.button("Send") and user_input:
         "message": user_input
     }
 
-    # Call Voiceflow API
+    # --- Call Voiceflow API ---
     response = requests.post(VOICEFLOW_ENDPOINT, json=payload, headers=headers)
     data = response.json()
 
-    # Voiceflow usually returns output text in data["trace"]
+    # --- Extract and Print Agent Response ---
+    agent_reply = ""
     if "trace" in data:
         for t in data["trace"]:
             if t["type"] == "speak":
@@ -41,5 +41,6 @@ if st.button("Send") and user_input:
 
     st.session_state.conversation.append(("User", user_input))
 
+# --- Display Conversation ---
 for speaker, message in st.session_state.conversation:
     st.write(f"**{speaker}:** {message}")
