@@ -6,7 +6,7 @@ import time
 
 
 
-API_KEY = st.secrets["ASSEMBLYAI_KEY"]
+API_KEY = st.secrets["e6605ca7f0864c118a61195ebf2c57c4"]
 
 headers = {"authorization": API_KEY}
 
