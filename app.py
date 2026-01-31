@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import time
 import openai
-
+import io
 
 ASSEMBLYAI_API_KEY = "e6605ca7f0864c118a61195ebf2c57c4"
 OPENAI_API_KEY = "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"
@@ -14,6 +14,10 @@ st.title("Mental Health AI Voice Assistant")
 # Use audio input instead of file uploader
 audio_bytes = st.audio_input("Record your voice message (max 1 min)")
 
+
+
+audio_file = io.BytesIO(audio_bytes)
+audio_file.name = "voice.wav" 
 if audio_bytes is not None:
     headers = {"authorization": ASSEMBLYAI_API_KEY}
 
@@ -21,7 +25,7 @@ if audio_bytes is not None:
     upload_response = requests.post(
         "https://api.assemblyai.com/v2/upload",
         headers={"authorization": ASSEMBLYAI_API_KEY},
-        files={"file": audio_bytes}
+        files={"file": audio_file}
     )
     audio_url = upload_response.json()["upload_url"]
 
