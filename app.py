@@ -169,7 +169,7 @@ with tab5:
             time.sleep(2)
         
         st.markdown(f'<p style="font-size: {st.session_state.size}px;">HOLD....{dots}</p>',unsafe_allow_html=True)
-        
+        time.sleep(2)
         for i in range(5):
             st.session_state.size -= 5
             st.markdown(f'<p style="font-size: {st.session_state.size}px;">Breathe Out......</p>', unsafe_allow_html=True)
