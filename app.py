@@ -145,5 +145,8 @@ with tab4:
     st.info("This link will take to to nearby Mental Hospitals in your area: " )
     qquery = "Mental Hospitals"
     search_urll = f"https://www.google.com/maps/search/{qquery}"
-    st.markdown(f'<a href="{search_urll}" target="_blank">Click to search: {qquery}</a>', unsafe_allow_html=True)
+    st.write(
+        search_urll,
+        unsafe_allow_html=True,
+    )
 
