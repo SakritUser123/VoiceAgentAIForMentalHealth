@@ -2,3 +2,4 @@ requests
 streamlit
 SpeechRecognition
 google-cloud-texttospeech
+pydub
