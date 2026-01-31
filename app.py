@@ -12,7 +12,7 @@ openai.api_key = OPENAI_API_KEY
 st.title("Mental Health AI Voice Assistant")
 
 # Use audio input instead of file uploader
-audio_bytes = st.audio_input("Record your voice message (max 1 min)")
+audio_input= st.audio_input("Record your voice message (max 1 min)")
 
 if audio_input is not None:
    
