@@ -26,7 +26,7 @@ st.set_page_config(page_title="Mental Health Assistant", layout="wide")
 
 tab0 , tab1, tab2, tab3 , tab4 = st.tabs(["Home Page" , "Search it Up!", "Chatbot", "Voice Chat", "Find Places near me"])
 with tab0:
-    st.title("AI Mental Health Support & AI assistant" )
+    st.title("AI Mental Health Support" )
 with tab1:
     st.title("Search up the problem!")
     st.write("Do you feel like you can't trust the voice chat bot? No worries! You can also search up your problems online.")
