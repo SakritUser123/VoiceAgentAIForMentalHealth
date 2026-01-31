@@ -1,6 +1,11 @@
 import requests
 import os
 import streamlit as st
+import speech_recognition as sr
+from pydub import AudioSegment
+from pydub.generators import Sine
+import io
+from google.cloud import texttospeech
 
 api_key = os.getenv('VF_API_KEY', 'VF.DM.697e24991ace920941890242.hfXlQVbsqZgpHJHa')
 
@@ -19,7 +24,7 @@ def interact(user_id, request):
 
 st.set_page_config(page_title="Mental Health Assistant", layout="wide")
 
-tab1, tab2 , tab3 = st.tabs(["Search it Up!", "Chatbot", "Voice agent"])
+tab1, tab2, tab3 = st.tabs(["Search it Up!", "Chatbot", "Voice Chat"])
 
 with tab1:
     st.title("Search up the problem!")
@@ -67,3 +72,63 @@ with tab2:
             st.session_state.messages.append({"role": "assistant", "content": bot_message})
             with st.chat_message("assistant"):
                 st.write(bot_message)
+
+with tab3:
+    st.title("Voice Chat")
+    st.write("Speak to the chatbot and hear responses back!")
+    
+    # Initialize voice session state
+    if 'voice_messages' not in st.session_state:
+        st.session_state.voice_messages = []
+    
+    # Audio input
+    audio_input = st.audio_input("Record your message")
+    
+    if audio_input:
+        st.write("Processing your audio...")
+        
+        # Convert audio to text
+        recognizer = sr.Recognizer()
+        try:
+            with sr.AudioFile(io.BytesIO(audio_input.getbuffer())) as source:
+                audio_data = recognizer.record(source)
+            user_text = recognizer.recognize_google(audio_data)
+            st.write(f"You said: {user_text}")
+            
+            # Send to Voiceflow
+            result = interact('voice_user', {'type': 'text', 'payload': user_text})
+            
+            # Extract bot response
+            bot_message = None
+            for item in result:
+                if item.get('type') == 'text' and 'message' in item.get('payload', {}):
+                    bot_message = item['payload']['message']
+                    break
+            
+            if bot_message:
+                st.write(f"Bot: {bot_message}")
+                
+                # Convert response to speech
+                client = texttospeech.TextToSpeechClient()
+                synthesis_input = texttospeech.SynthesisInput(text=bot_message)
+                voice = texttospeech.VoiceSelectionParams(
+                    language_code="en-US",
+                    name="en-US-Neural2-C"
+                )
+                audio_config = texttospeech.AudioConfig(
+                    audio_encoding=texttospeech.AudioEncoding.MP3
+                )
+                
+                response = client.synthesize_speech(
+                    input=synthesis_input, voice=voice, audio_config=audio_config
+                )
+                
+                # Play audio
+                st.audio(response.audio_content, format="audio/mp3")
+        
+        except sr.UnknownValueError:
+            st.error("Could not understand audio. Please try again.")
+        except Exception as e:
+            st.error(f"Error: {str(e)}")
+
+
