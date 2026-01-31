@@ -148,7 +148,7 @@ with tab4:
     st.markdown(f'<a href="{search_urll}" target="_blank">Click to search: {qquery}</a>', unsafe_allow_html=True)
 
 with tab5:
-
+st.session_state.size = 20
     for i in range(5):
         st.session_state.size += 5
         st.markdown(
