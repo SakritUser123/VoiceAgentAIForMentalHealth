@@ -17,7 +17,7 @@ audio_input= st.audio_input("Record your voice message (max 1 min)")
 if audio_input is not None:
    
     audio_bytes_io = io.BytesIO()
-    sf.write(audio_bytes_io, audio_input, samplerate=44100, format='WAV')
+    st.write(audio_bytes_io, audio_input, samplerate=44100, format='WAV')
     audio_bytes_io.seek(0)
 
 
