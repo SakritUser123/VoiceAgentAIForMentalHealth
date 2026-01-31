@@ -62,7 +62,7 @@ with tab2:
     user_input = st.chat_input("How do you feel...")
     
     if user_input:
-        # Add user message to history
+
         st.session_state.messages.append({"role": "user", "content": user_input})
         with st.chat_message("user"):
             st.write(user_input)
@@ -117,7 +117,6 @@ with tab3:
             if bot_message:
                 st.write(f"Bot: {bot_message}")
                 
-                # Convert response to speech
                 client = texttospeech.TextToSpeechClient()
                 synthesis_input = texttospeech.SynthesisInput(text=bot_message)
                 voice = texttospeech.VoiceSelectionParams(
