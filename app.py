@@ -36,10 +36,6 @@ with tab0:
     st.write("You can also search up commonly searched mental health terms for you to gain understanding of those terms.")
 
     
-
-   
-
-Mental health education
 with tab1:
     st.title("Search up the problem!")
     st.write("Do you feel like you can't trust the voice chat bot? No worries! You can also search up your problems online.")
