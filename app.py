@@ -6,7 +6,7 @@ from pydub import AudioSegment
 from pydub.generators import Sine
 import io
 from google.cloud import texttospeech
-
+import time
 api_key = os.getenv('VF_API_KEY', 'VF.DM.697e24991ace920941890242.hfXlQVbsqZgpHJHa')
 
 def interact(user_id, request):
