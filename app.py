@@ -3,7 +3,7 @@ import requests
 import time
 import openai
 import io
-
+import soundfile as sf
 ASSEMBLYAI_API_KEY = "e6605ca7f0864c118a61195ebf2c57c4"
 OPENAI_API_KEY = "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"
 openai.api_key = OPENAI_API_KEY
@@ -17,7 +17,7 @@ audio_input= st.audio_input("Record your voice message (max 1 min)")
 if audio_input is not None:
    
     audio_bytes_io = io.BytesIO()
-    st.write(audio_bytes_io, audio_input, samplerate=44100, format='WAV')
+    sf.write(audio_bytes_io, audio_input, samplerate=44100, format='WAV')
     audio_bytes_io.seek(0)
 
 
