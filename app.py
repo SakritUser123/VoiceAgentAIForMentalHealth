@@ -1,7 +1,7 @@
 import streamlit as st
 import openai
 import requests
-from gtts import gTTS
+import gTTS
 from io import BytesIO
 from pydub import AudioSegment
 from pydub.playback import play
