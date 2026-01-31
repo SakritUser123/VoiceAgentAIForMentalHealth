@@ -155,7 +155,7 @@ with tab5:
 
     if start:
         st.session_state.size = 20
-        button_text = "Start Session" if session_state.size != 20 else "End Session"
+        button_text = "Start Session" if st.session_state.size != 20 else "End Session"
 
         
         if st.button(button_text, key="387381831"):
