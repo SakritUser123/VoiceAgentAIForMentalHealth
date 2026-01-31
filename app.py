@@ -141,6 +141,7 @@ with tab3:
             st.error(f"Error: {str(e)}")
 
 with tab4:
+    st.title("Find Mental Health Institutions Near Me")
     st.info("This link will take to to nearby Mental Hospitals in your area: " )
     qquery = "Mental Hospitals"
     search_urll = f"https://www.google.com/maps/search/{qquery}"
