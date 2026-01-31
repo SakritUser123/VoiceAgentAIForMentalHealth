@@ -151,23 +151,23 @@ with tab5:
     if "dots" not in st.session_state:
         st.session_state.dots = 0
 
-    if st.button("Start Session! "):
+    if st.button("Start Session! ", key = 1):
         st.session_state.size = 20
         for i in range(5):
-            if st.button("End Session! "):
+            if st.button("End Session! " , key = 2):
                 st.balloons()
                 
             st.session_state.size += 5
             dots = "." * st.session_state.dots
             st.markdown(f'<p style="font-size: {st.session_state.size}px;">Breathe In{dots}</p>',unsafe_allow_html=True)
-            time.sleep(4)
+            time.sleep(2)
         
         st.write("HOLD....")
         
         for i in range(5):
             st.session_state.size -= 5
             st.markdown(f'<p style="font-size: {st.session_state.size}px;">Breathe In......</p>', unsafe_allow_html=True)
-            time.sleep(4)
+            time.sleep(2)
          
 
     
