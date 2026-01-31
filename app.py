@@ -148,12 +148,29 @@ with tab4:
     st.markdown(f'<a href="{search_urll}" target="_blank">Click to search: {qquery}</a>', unsafe_allow_html=True)
 
 with tab5:
-    st.session_state.size = 20
-    for i in range(5):
-        st.session_state.size += 5
-        st.markdown(
-        f'<p style="font-size: {st.session_state.size}px;">Breathe In......</p>',
-        unsafe_allow_html=True
-    )
+    if st.button("Start Session! "):
+        st.session_state.size = 20
+        for i in range(5):
+            if st.button("End Session! "):
+                st.balloons()
+                
+            st.session_state.size += 5
+            dots = "." * st.session_state.dots
+            st.markdown(
+            f'<p style="font-size: {st.session_state.size}px;">Breathe In{dots}</p>',
+            unsafe_allow_html=True
+            time.sleep(4)
+        )
+        st.write("HOLD....")
         
+        for i in range(5):
+            st.session_state.size -= 5
+            st.markdown(
+            f'<p style="font-size: {st.session_state.size}px;">Breathe In......</p>',
+            unsafe_allow_html=True
+            time.sleep(4)
+        )   
+
+    
+       
     
