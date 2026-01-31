@@ -161,8 +161,7 @@ with tab5:
             st.write(f"Button clicked: {button_text}")
             
         for i in range(5):
-            if end:
-                st.balloons()
+            
                 
             st.session_state.size += 5
             dots = "." * st.session_state.dots
