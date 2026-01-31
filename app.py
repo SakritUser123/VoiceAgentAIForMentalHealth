@@ -148,6 +148,7 @@ with tab4:
     st.markdown(f'<a href="{search_urll}" target="_blank">Click to search: {qquery}</a>', unsafe_allow_html=True)
 
 with tab5:
+    st.title("Breathing Exercise")
     start = st.button("Start!")
     if "dots" not in st.session_state:
         st.session_state.dots = 0
@@ -177,6 +178,7 @@ with tab5:
          
         st.balloons()
 with tab6:
+    st.title("Motivational Videos(so relatable)")
     qqquery = "watch?v=VIbqMf-q1wg"
     search_urlll = f"https://www.youtube.com/{qqquery}"
     st.markdown(f'<a href="{search_urlll}" target="_blank">Click to search: {qqquery}</a>', unsafe_allow_html=True)
