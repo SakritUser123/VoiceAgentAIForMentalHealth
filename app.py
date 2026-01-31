@@ -38,18 +38,17 @@ with tab2:
     st.title("Chatbot Assistant")
     st.write("Do you feel like you need to talk to someone, but you feel like you can talk to no one? Although this AI doesn't actually have feelings so it can't empathize, it can potentially help you by providing guidance, providing you with exercises that reduce stress and improve mental health, gives advice on topics you feel down about, basically being your AI mental assistant.")
     
-    # Initialize session state for conversation
     if 'messages' not in st.session_state:
         st.session_state.messages = []
     if 'user_id' not in st.session_state:
         st.session_state.user_id = 'user123'
     
-    # Display chat history
+  
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.write(message["content"])
     
-    # Chat input
+
     user_input = st.chat_input("How do you feel...")
     
     if user_input:
@@ -58,10 +57,10 @@ with tab2:
         with st.chat_message("user"):
             st.write(user_input)
         
-        # Get bot response
+   
         result = interact(st.session_state.user_id, {'type': 'text', 'payload': user_input})
         
-        # Extract and display bot message
+       
         bot_message = None
         for item in result:
             if item.get('type') == 'text' and 'message' in item.get('payload', {}):
@@ -77,17 +76,17 @@ with tab3:
     st.title("Voice Chat")
     st.write("Speak to the chatbot and hear responses back!")
     
-    # Initialize voice session state
+    
     if 'voice_messages' not in st.session_state:
         st.session_state.voice_messages = []
     
-    # Audio input
+
     audio_input = st.audio_input("Record your message")
     
     if audio_input:
         st.write("Processing your audio...")
         
-        # Convert audio to text
+    
         recognizer = sr.Recognizer()
         try:
             with sr.AudioFile(io.BytesIO(audio_input.getbuffer())) as source:
@@ -95,10 +94,10 @@ with tab3:
             user_text = recognizer.recognize_google(audio_data)
             st.write(f"You said: {user_text}")
             
-            # Send to Voiceflow
+            
             result = interact('voice_user', {'type': 'text', 'payload': user_text})
             
-            # Extract bot response
+        
             bot_message = None
             for item in result:
                 if item.get('type') == 'text' and 'message' in item.get('payload', {}):
@@ -123,7 +122,7 @@ with tab3:
                     input=synthesis_input, voice=voice, audio_config=audio_config
                 )
                 
-                # Play audio
+             
                 st.audio(response.audio_content, format="audio/mp3")
         
         except sr.UnknownValueError:
