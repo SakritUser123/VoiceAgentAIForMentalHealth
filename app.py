@@ -151,10 +151,10 @@ with tab5:
     if "dots" not in st.session_state:
         st.session_state.dots = 0
 
-    if st.button("Start Session! ", key = 675):
+    if st.button("Start Session! ", key = "675"):
         st.session_state.size = 20
         for i in range(5):
-            if st.button("End Session! " , key = 2):
+            if st.button("End Session! " , key = "2"):
                 st.balloons()
                 
             st.session_state.size += 5
