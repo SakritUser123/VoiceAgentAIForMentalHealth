@@ -19,7 +19,7 @@ def interact(user_id, request):
 
 st.set_page_config(page_title="Mental Health Assistant", layout="wide")
 
-tab1, tab2 = st.tabs(["Search it Up!", "Chatbot"])
+tab1, tab2 , tab3 = st.tabs(["Search it Up!", "Chatbot", "Voice agent"])
 
 with tab1:
     st.title("Search up the problem!")
