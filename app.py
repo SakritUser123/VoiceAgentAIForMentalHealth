@@ -50,7 +50,7 @@ with tab2:
             st.write(message["content"])
     
     # Chat input
-    
+    user_input = st.chat_input("How do you feel...")
     
     if user_input:
         # Add user message to history
@@ -72,7 +72,7 @@ with tab2:
             st.session_state.messages.append({"role": "assistant", "content": bot_message})
             with st.chat_message("assistant"):
                 st.write(bot_message)
-    user_input = st.chat_input("How do you feel...")
+    
 with tab3:
     st.title("Voice Chat")
     st.write("Speak to the chatbot and hear responses back!")
