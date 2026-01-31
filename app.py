@@ -155,6 +155,12 @@ with tab5:
 
     if start:
         st.session_state.size = 20
+        button_text = "Start Session" if session_state.size != 20 else "End Session"
+
+        
+        if st.button(button_text, key="387381831"):
+            st.write(f"Button clicked: {button_text}")
+            
         for i in range(5):
             if end:
                 st.balloons()
