@@ -24,7 +24,7 @@ def interact(user_id, request):
 
 st.set_page_config(page_title="Mental Health Assistant", layout="wide")
 
-tab1, tab2, tab3 = st.tabs(["Search it Up!", "Chatbot", "Voice Chat"])
+tab1, tab2, tab3 , tab4 = st.tabs(["Search it Up!", "Chatbot", "Voice Chat", "Look for Help"])
 
 with tab1:
     st.title("Search up the problem!")
@@ -130,4 +130,8 @@ with tab3:
         except Exception as e:
             st.error(f"Error: {str(e)}")
 
+with tab4:
+    qquery = "Mental Hospitals"
+    search_urll = f"https://www.google.com/maps/search/{qquery}"
+    st.markdown(f'<a href="{search_urll}" target="_blank">Click to search: {qquery}</a>', unsafe_allow_html=True)
 
