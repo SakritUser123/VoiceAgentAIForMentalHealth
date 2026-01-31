@@ -158,7 +158,7 @@ with tab5:
             dots = "." * st.session_state.dots
             st.markdown(f'<p style="font-size: {st.session_state.size}px;">Breathe In{dots}</p>',unsafe_allow_html=True)
             time.sleep(4)
-        )
+        
         st.write("HOLD....")
         
         for i in range(5):
