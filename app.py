@@ -20,8 +20,7 @@ if audio_input is not None:
     sf.write(audio_bytes_io, audio_input, samplerate=44100, format='WAV')
     audio_bytes_io.seek(0)
 
-if audio_bytes is not None:
-    headers = {"authorization": ASSEMBLYAI_API_KEY}
+
 
     # Step 1: Upload audio to AssemblyAI
     upload_response = requests.post(
