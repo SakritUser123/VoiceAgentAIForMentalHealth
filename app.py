@@ -24,7 +24,7 @@ def interact(user_id, request):
 
 st.set_page_config(page_title="Mental Health Assistant", layout="wide")
 
-tab0 , tab1, tab2, tab3 , tab4 = st.tabs(["Home Page" , "Search it Up!", "Chatbot", "Voice Chat", "Look for Help"])
+tab0 , tab1, tab2, tab3 , tab4 = st.tabs(["Home Page" , "Search it Up!", "Chatbot", "Voice Chat", "Find Places near me"])
 with tab0:
     st.title("AI Mental Health Support & AI assistant" )
 with tab1:
