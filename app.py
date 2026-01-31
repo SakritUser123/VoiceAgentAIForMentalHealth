@@ -24,7 +24,7 @@ def interact(user_id, request):
 
 st.set_page_config(page_title="Mental Health Assistant", layout="wide")
 
-tab0 , tab1, tab2, tab3 , tab4 , tab5 , tab6 = st.tabs(["Home Page" , "Search it Up!", "Chatbot", "Voice Chat", "Find Places near me", "Interactive Breathing Exercise","Videos For Mental Motivation])
+tab0 , tab1, tab2, tab3 , tab4 , tab5 , tab6 = st.tabs(["Home Page" , "Search it Up!", "Chatbot", "Voice Chat", "Find Places near me", "Interactive Breathing Exercise","Videos For Mental Motivation"])
 with tab0:
     st.title("AI Mental Health Support")
     st.write("This app provides AI-powered conversations and educational information about mental health topics like stress, anxiety, and burnout. It is designed to support awareness and self-reflection.")
