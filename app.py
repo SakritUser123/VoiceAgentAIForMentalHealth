@@ -2,13 +2,13 @@ import streamlit as st
 import requests
 import openai
 from io import BytesIO
+import time
 
 
-# Add these in Streamlit Cloud "Secrets" tab
-# ASSEMBLYAI_API_KEY="e6605ca7f0864c118a61195ebf2c57c4"
-# OPENAI_API_KEY="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"
-openai.api_key = st.secrets["OPENAI_API_KEY"]
-ASSEMBLYAI_API_KEY = st.secrets["ASSEMBLYAI_API_KEY"]
+OPENAI_API_KEY = "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"
+ASSEMBLYAI_API_KEY = "e6605ca7f0864c118a61195ebf2c57c4"
+
+openai.api_key = OPENAI_API_KEY
 
 st.title("Voice AI Assistant ")
 
@@ -27,7 +27,7 @@ if audio_file:
     )
     audio_url = response.json()["upload_url"]
 
-    # Request transcription
+
     st.info("Transcribing...")
     transcript_response = requests.post(
         "https://api.assemblyai.com/v2/transcript",
@@ -36,8 +36,7 @@ if audio_file:
     )
     transcript_id = transcript_response.json()["id"]
 
-    # Poll for transcription result
-    import time
+
     while True:
         r = requests.get(f"https://api.assemblyai.com/v2/transcript/{transcript_id}", headers=headers)
         result = r.json()
@@ -53,7 +52,7 @@ if audio_file:
     st.success("Transcription complete!")
     st.write("You said:", user_text)
 
-    # --- Generate GPT response ---
+
     st.info("Generating AI response...")
     completion = openai.ChatCompletion.create(
         model="gpt-4",
@@ -62,7 +61,7 @@ if audio_file:
     ai_text = completion.choices[0].message.content
     st.write("AI response:", ai_text)
 
-    # --- Convert AI response to speech using OpenAI TTS ---
+
     st.info("Converting AI response to speech...")
     tts_response = openai.audio.speech.create(
         model="gpt-4o-mini-tts",
