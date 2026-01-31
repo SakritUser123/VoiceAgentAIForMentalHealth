@@ -17,7 +17,7 @@ audio_bytes = st.audio_input("Record your voice message (max 1 min)")
 
 if audio_bytes is not None:
     audio_file = io.BytesIO(audio_bytes)
-audio_file.name = "voice.wav" 
+
 if audio_bytes is not None:
     headers = {"authorization": ASSEMBLYAI_API_KEY}
 
