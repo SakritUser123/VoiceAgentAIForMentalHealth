@@ -1,5 +1,7 @@
 requests
-streamlit
-speech_recognition
+streamlit>=1.0
+speech-recognition
 pydub
 google-cloud-texttospeech
+SpeechRecognition
+pyaudio
