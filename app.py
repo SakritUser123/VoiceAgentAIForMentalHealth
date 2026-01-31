@@ -144,9 +144,8 @@ with tab4:
     st.title("Find Mental Health Institutions Near Me")
     st.info("This link will take to to nearby Mental Hospitals in your area: " )
     qquery = "Mental Hospitals"
-    search_urll = f"https://www.google.com/maps/search/{qquery}"
     st.write(
-        search_urll,
+        f'<iframe src="https://www.google.com/maps/search/{qquery}"></iframe>',
         unsafe_allow_html=True,
     )
 
