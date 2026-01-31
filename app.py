@@ -54,34 +54,37 @@ if audio:
 
 
 
-    # Polling
+ 
+with st.spinner("Transcribing..."):
 
-    with st.spinner("Transcribing..."):
+    while True:
 
-        while True:
+        poll = requests.get(
+            f"https://api.assemblyai.com/v2/transcript/{transcript_id}",
+            headers=headers
+        ).json()
 
-            poll = requests.get(
-
-                f"https://api.assemblyai.com/v2/transcript/{transcript_id}",
-
-                headers=headers).json()
-
-            if poll["status"] == "completed":
-
-                st.success("Done!")
-
-                st.write(poll["text"])
-
-                break
+        if poll["status"] == "completed":
+            st.success("Done!")
 
 
+            st.write(poll["text"])
 
-            elif poll["status"] == "error":
+            user_text = poll["text"]
+            ai_response = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a friendly mental health AI assistant."},
+                    {"role": "user", "content": user_text}
+                ]
+            )
+            st.write("AI says:", ai_response.choices[0].message["content"])
 
-                st.error("Transcription failed")
+            break
 
-                break
+        elif poll["status"] == "error":
+            st.error("Transcription failed")
+            break
 
+        time.sleep(2)
 
-
-            time.sleep(2)
