@@ -15,8 +15,8 @@ st.title("Mental Health AI Voice Assistant")
 audio_bytes = st.audio_input("Record your voice message (max 1 min)")
 
 
-
-audio_file = io.BytesIO(audio_bytes.read())
+if audio_bytes is not None:
+    audio_file = io.BytesIO(audio_bytes)
 audio_file.name = "voice.wav" 
 if audio_bytes is not None:
     headers = {"authorization": ASSEMBLYAI_API_KEY}
